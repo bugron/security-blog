@@ -1,19 +1,22 @@
 module.exports = {
-  "env": {
-    "browser": true,
-    "es6": true,
+  root: true,
+  env: {
+    browser: true,
+    node: true,
+    es2020: true,
   },
-  "plugins": [
-    "react",
-  ],
-  "globals": {
-    "graphql": false,
+  plugins: ['react'],
+  globals: {
+    graphql: false,
   },
-  "parserOptions": {
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "experimentalObjectRestSpread": true,
-      "jsx": true,
+  parserOptions: {
+    parser: '@babel/eslint-parser',
+    sourceType: 'module',
+    ecmaVersion: 12,
+    requireConfigFile: false,
+    ecmaFeatures: {
+      jsx: true,
+      modules: true,
     },
-  }
-}
+  },
+};

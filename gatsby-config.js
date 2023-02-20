@@ -1,11 +1,12 @@
+/** @type {import('gatsby').GatsbyConfig} */
 module.exports = {
   siteMetadata: {
-    title: 'Overreacted',
-    author: 'Dan Abramov',
-    description: 'Personal blog by Dan Abramov. I explain with words and code.',
+    title: 'Red Pill Security Blog',
+    author: 'Levon Isajanyan',
+    description: 'Personal blog by Levon Isajanyan.',
     siteUrl: 'https://overreacted.io',
     social: {
-      twitter: '@dan_abramov',
+      twitter: '@L3vOns',
     },
   },
   pathPrefix: '/',
@@ -56,7 +57,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: `UA-130227707-1`,
+        trackingId: `XXXXXXX`,
       },
     },
     {
@@ -77,11 +78,12 @@ module.exports = {
         feeds: [
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.edges.map(edge => {
+              return allMarkdownRemark.edges.map((edge) => {
                 const siteUrl = site.siteMetadata.siteUrl;
                 const postText = `
-                <div style="margin-top=55px; font-style: italic;">(This is an article posted to my blog at overreacted.io. You can read it online by <a href="${siteUrl +
-                  edge.node.fields.slug}">clicking here</a>.)</div>
+                <div style="margin-top=55px; font-style: italic;">(This is an article posted to my blog at overreacted.io. You can read it online by <a href="${
+                  siteUrl + edge.node.fields.slug
+                }">clicking here</a>.)</div>
               `;
 
                 let html = edge.node.html;
@@ -105,7 +107,7 @@ module.exports = {
               {
                 allMarkdownRemark(
                   limit: 1000,
-                  sort: { order: DESC, fields: [frontmatter___date] }
+                  sort: { frontmatter: { date: DESC } }
                   filter: {fields: { langKey: {eq: "en"}}}
                 ) {
                   edges {
@@ -132,41 +134,10 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-ebook`,
-      options: {
-        filename: 'overreacted-ebook.epub',
-        query: `
-          {
-            site {
-              siteMetadata {
-                title
-                author
-              }
-            }
-            allMarkdownRemark(
-              sort: { fields: frontmatter___date, order: ASC },
-              filter: { fields: { langKey: { eq: "en" } } }
-            ) {
-              edges {
-                node {
-                  id
-                  fileAbsolutePath
-                  rawMarkdownBody
-                  frontmatter {
-                    title
-                    date
-                  }
-                }
-              }
-            }
-          }`,
-      },
-    },
-    {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Overreacted`,
-        short_name: `Overreacted`,
+        name: `Red Pill Security Blog`,
+        short_name: `RP Security`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#ffa7c4`,

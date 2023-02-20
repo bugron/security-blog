@@ -45,7 +45,7 @@ export default class Toggle extends PureComponent {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if ('checked' in nextProps) {
       this.setState({ checked: !!nextProps.checked });
       this.previouslyChecked = !!nextProps.checked;
@@ -181,7 +181,7 @@ export default class Toggle extends PureComponent {
 
         <input
           {...inputProps}
-          ref={ref => {
+          ref={(ref) => {
             this.input = ref;
           }}
           onFocus={this.handleFocus}

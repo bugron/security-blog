@@ -78,8 +78,8 @@ class BlogIndexTemplate extends React.Component {
 
 export default BlogIndexTemplate;
 
-export const pageQuery = graphql`
-  query($langKey: String!) {
+export const query = graphql`
+  query ($langKey: String!) {
     site {
       siteMetadata {
         title
@@ -88,7 +88,7 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       filter: { fields: { langKey: { eq: $langKey } } }
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: { frontmatter: { date: DESC } }
     ) {
       edges {
         node {

@@ -27,7 +27,7 @@ class Translations extends React.Component {
   render() {
     let { translations, lang, languageLink, editUrl } = this.props;
 
-    let readerTranslations = translations.filter(lang => lang !== 'ru');
+    let readerTranslations = translations.filter((lang) => lang !== 'ru');
     let hasRussianTranslation = translations.indexOf('ru') !== -1;
 
     return (
@@ -95,13 +95,8 @@ class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark;
     const siteTitle = get(this.props, 'data.site.siteMetadata.title');
-    let {
-      previous,
-      next,
-      slug,
-      translations,
-      translatedLinks,
-    } = this.props.pageContext;
+    let { previous, next, slug, translations, translatedLinks } =
+      this.props.pageContext;
     const lang = post.fields.langKey;
 
     // Replace original links with translated when available.
@@ -111,7 +106,7 @@ class BlogPostTemplate extends React.Component {
     // see utils/whitelist.js
     html = replaceAnchorLinksByLanguage(html, lang);
 
-    translatedLinks.forEach(link => {
+    translatedLinks.forEach((link) => {
       // jeez
       function escapeRegExp(str) {
         return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -211,7 +206,7 @@ class BlogPostTemplate extends React.Component {
               }}
               to={'/'}
             >
-              Overreacted
+              Red Pill Security Blog
             </Link>
           </h3>
           <Bio />
@@ -253,7 +248,7 @@ class BlogPostTemplate extends React.Component {
 
 export default BlogPostTemplate;
 
-export const pageQuery = graphql`
+export const query = graphql`
   query BlogPostBySlug($slug: String!) {
     site {
       siteMetadata {
@@ -269,7 +264,6 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         spoiler
-        cta
       }
       fields {
         slug

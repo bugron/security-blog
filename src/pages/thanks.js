@@ -20,7 +20,7 @@ class Thanks extends React.Component {
   }
 }
 
-export const pageQuery = graphql`
+export const query = graphql`
   query ThanksSiteData {
     site {
       siteMetadata {

@@ -20,7 +20,7 @@ class Confirm extends React.Component {
   }
 }
 
-export const pageQuery = graphql`
+export const query = graphql`
   query ConfirmSiteData {
     site {
       siteMetadata {
